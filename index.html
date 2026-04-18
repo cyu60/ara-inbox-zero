@@ -438,16 +438,25 @@
   }
 
   .welcome-icon {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
   }
 
-  .welcome-icon img {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
+  .brand-mark {
+    background: linear-gradient(135deg, var(--accent) 0%, #4a6aff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 10px 28px rgba(28,63,220,0.22), 0 2px 6px rgba(28,63,220,0.08);
   }
+  .brand-mark.lg { width: 84px; height: 84px; border-radius: 22px; }
+  .brand-mark.lg svg { width: 42px; height: 42px; }
+  .brand-mark.sm {
+    width: 30px; height: 30px; border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(28,63,220,0.25);
+  }
+  .brand-mark.sm svg { width: 17px; height: 17px; }
+  .brand-mark svg { fill: #fff; }
 
   .welcome h3 {
     font-family: 'DM Serif Display', serif;
@@ -471,29 +480,45 @@
 
   .welcome-suggestions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.55rem;
     margin-top: 1.75rem;
-    justify-content: center;
-    max-width: 520px;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
   }
 
   .suggestion {
     background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 0.5rem 1rem;
-    font-size: 0.78rem;
-    color: var(--muted);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 0.85rem 1.05rem;
+    font-size: 0.84rem;
+    color: var(--fg);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: border-color .18s, box-shadow .18s, transform .15s;
     font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: 100%;
+    max-width: 380px;
   }
-
+  .suggestion::before {
+    content: '›';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
   .suggestion:hover {
     border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-light);
+    box-shadow: 0 4px 14px rgba(28,63,220,0.10);
+    transform: translateY(-1px);
   }
 
   /* --- Error toast --- */
@@ -533,10 +558,10 @@
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-logo">
-        <img src="logo.png" alt="DayDreamers">
-        <span>DayDreamers</span>
+        <div class="brand-mark sm"><svg viewBox="0 0 24 24"><path d="M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z"/></svg></div>
+        <span>Inbox Zero</span>
       </div>
-      <div class="sidebar-tagline">Ara AI Computer</div>
+      <div class="sidebar-tagline">Aragram · DayDreamers</div>
     </div>
 
     <div class="sidebar-label">Agents</div>
@@ -558,9 +583,9 @@
 
     <div class="messages" id="messages">
       <div class="welcome" id="welcome">
-        <div class="welcome-icon"><img src="logo.png" alt=""></div>
-        <h3>Your AI <em>Computer</em></h3>
-        <p>Pick an agent from the sidebar — each one is a specialized workflow running on Ara's cloud runtime with its own sandbox, memory, and tools.</p>
+        <div class="welcome-icon"><div class="brand-mark lg"><svg viewBox="0 0 24 24"><path d="M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z"/></svg></div></div>
+        <h3>Your <em>Inbox Zero</em></h3>
+        <p>Triage your inbox. Auto-draft replies. Flag what's urgent. Summarize long threads.</p>
         <div class="welcome-suggestions" id="suggestions"></div>
       </div>
     </div>
